@@ -51,8 +51,8 @@ export class ReactNativeModal extends Component {
   // device rotation.
   state = {
     isVisible: false,
-    deviceWidth: Dimensions.get('window').width,
-    deviceHeight: Dimensions.get('window').height,
+    // deviceWidth: Dimensions.get('window').width,
+    // deviceHeight: Dimensions.get('window').height,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -109,14 +109,14 @@ export class ReactNativeModal extends Component {
     this.props.onBackButtonPress();
   };
 
-  _handleLayout = event => {
-    // Here we update the device dimensions in the state if the layout changed (triggering a render)
-    const deviceWidth = Dimensions.get('window').width;
-    const deviceHeight = Dimensions.get('window').height;
-    if (deviceWidth !== this.state.deviceWidth || deviceHeight !== this.state.deviceHeight) {
-      this.setState({ deviceWidth, deviceHeight });
-    }
-  };
+  // _handleLayout = event => {
+  //   // Here we update the device dimensions in the state if the layout changed (triggering a render)
+  //   const deviceWidth = Dimensions.get('window').width;
+  //   const deviceHeight = Dimensions.get('window').height;
+  //   if (deviceWidth !== this.state.deviceWidth || deviceHeight !== this.state.deviceHeight) {
+  //     this.setState({ deviceWidth, deviceHeight });
+  //   }
+  // };
 
   render() {
     const {
@@ -145,11 +145,10 @@ export class ReactNativeModal extends Component {
         {...otherProps}
       >
         <View
-          onLayout={this._handleLayout}
           ref={ref => (this.backdropRef = ref)}
           style={[
             styles.backdrop,
-            { backgroundColor: backdropColor, width: deviceWidth, height: deviceHeight },
+            { backgroundColor: backdropColor, /*width: deviceWidth, height: deviceHeight*/ },
           ]}
         />
         <View
